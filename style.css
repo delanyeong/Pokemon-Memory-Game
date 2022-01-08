@@ -1,0 +1,32 @@
+#div1 {
+    float: left
+}
+
+.grid {
+    display: flex;
+    flex-wrap: wrap;
+    height: 300px;
+    width: 400px;
+}
+
+.healthBar {
+    width: 500px;
+    height: 50px;
+    text-align: center;
+    font-size: 40;
+    background-color: green;
+    border: 5px solid green;
+}
+
+.mugshot {
+    width: 200px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+#div2 {
+    float: center;
+}
