@@ -56,9 +56,9 @@ cardArray.sort(() => 0.5 - Math.random()) //to reset and mix up the positions EN
 
 const grid = document.querySelector('.grid')
 const resultDisplay = document.querySelector('#result')
-var cardsChosen = []
-var cardsChosenId = []
-var cardsWon = []
+let cardsChosen = []
+let cardsChosenId = []
+let cardsWon = []
 
 //create your board
 function createBoard() {
@@ -82,6 +82,7 @@ function checkForMatch() {
       cards[optionOneId].setAttribute('src', 'images/blank.png')
       cards[optionTwoId].setAttribute('src', 'images/blank.png')
       alert('You have clicked the same image!')
+      console.log(newBoss.health)
     }
     else if (cardsChosen[0] === cardsChosen[1]) {
       alert('You found a match')
@@ -90,10 +91,14 @@ function checkForMatch() {
       cards[optionOneId].removeEventListener('click', flipCard)
       cards[optionTwoId].removeEventListener('click', flipCard)
       cardsWon.push(cardsChosen)
+      lessPlayerHealth()
+      newBoss.health -= 16.67
+      console.log(newBoss.health)
     } else {
       cards[optionOneId].setAttribute('src', 'images/blank.png')
       cards[optionTwoId].setAttribute('src', 'images/blank.png')
       alert('Sorry, try again')
+      console.log(newBoss.health)
     }
     cardsChosen = []
     cardsChosenId = []
@@ -116,6 +121,25 @@ function flipCard() {
     }
 }
 
+//
+class Pet {
+    constructor(health) {
+        this.health = health
+    }
+}
+
+const newBoss = new Pet(100)
+
+const lessPlayerHealth = () => {
+    const newHealth = newBoss.health -= 16.67;
+    updatePlayerHealth(newHealth);
+  };
+
+  const updatePlayerHealth = (healthLeft) => {
+    const $healthBar = $(".healthBar");
+    $healthBar.text(newBoss.health + "%");
+    $healthBar.css("width", 6 * healthLeft);
+  };
 
 
 
