@@ -82,7 +82,6 @@ function checkForMatch() {
       cards[optionOneId].setAttribute('src', 'images/blank.png')
       cards[optionTwoId].setAttribute('src', 'images/blank.png')
       alert('You have clicked the same image!')
-    //   console.log(newBoss.health)
     }
     else if (cardsChosen[0] === cardsChosen[1]) {
       alert('You found a match')
@@ -92,15 +91,12 @@ function checkForMatch() {
       cards[optionTwoId].removeEventListener('click', flipCard)
       cardsWon.push(cardsChosen)
       const pb1 = new ProgressBar(document.querySelector('.progress-bar'), Math.floor(cardsWon.length*100/6))
-    //   lessPlayerHealth()
-    //   newBoss.health -= 16.67
-    //   console.log(newBoss.health)
     } else {
       cards[optionOneId].setAttribute('src', 'images/blank.png')
       cards[optionTwoId].setAttribute('src', 'images/blank.png')
       alert('Sorry, try again')
-    //   console.log(newBoss.health)
     }
+
     cardsChosen = []
     cardsChosenId = []
     resultDisplay.textContent = cardsWon.length
@@ -122,26 +118,7 @@ function flipCard() {
     }
 }
 
-//
-// class Pet {
-//     constructor(health) {
-//         this.health = health
-//     }
-// }
-
-// const newBoss = new Pet(100)
-
-// const lessPlayerHealth = () => {
-//     const newHealth = newBoss.health -= 16.67;
-//     updatePlayerHealth(newHealth);
-//   };
-
-//   const updatePlayerHealth = (healthLeft) => {
-//     const $healthBar = $(".healthBar");
-//     $healthBar.text(newBoss.health + "%");
-//     $healthBar.css("width", 6 * healthLeft);
-//   };
-
+//Constructor for Healthbar
   class ProgressBar {
       constructor (element, initialValue = 0) {
           this.valueElem = element.querySelector('.progress-bar-value');
@@ -170,9 +147,6 @@ function flipCard() {
         }
 
   }
-
-//   const resultTitle = document.querySelector('#result')
-//   const pb1 = new ProgressBar(document.querySelector('.progress-bar'), cardsWon.textContent)
 
 
 
