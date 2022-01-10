@@ -82,7 +82,7 @@ function checkForMatch() {
       cards[optionOneId].setAttribute('src', 'images/blank.png')
       cards[optionTwoId].setAttribute('src', 'images/blank.png')
       alert('You have clicked the same image!')
-      console.log(newBoss.health)
+    //   console.log(newBoss.health)
     }
     else if (cardsChosen[0] === cardsChosen[1]) {
       alert('You found a match')
@@ -91,14 +91,15 @@ function checkForMatch() {
       cards[optionOneId].removeEventListener('click', flipCard)
       cards[optionTwoId].removeEventListener('click', flipCard)
       cardsWon.push(cardsChosen)
-      lessPlayerHealth()
-      newBoss.health -= 16.67
-      console.log(newBoss.health)
+      const pb1 = new ProgressBar(document.querySelector('.progress-bar'), Math.floor(cardsWon.length*100/6))
+    //   lessPlayerHealth()
+    //   newBoss.health -= 16.67
+    //   console.log(newBoss.health)
     } else {
       cards[optionOneId].setAttribute('src', 'images/blank.png')
       cards[optionTwoId].setAttribute('src', 'images/blank.png')
       alert('Sorry, try again')
-      console.log(newBoss.health)
+    //   console.log(newBoss.health)
     }
     cardsChosen = []
     cardsChosenId = []
@@ -122,24 +123,56 @@ function flipCard() {
 }
 
 //
-class Pet {
-    constructor(health) {
-        this.health = health
-    }
-}
+// class Pet {
+//     constructor(health) {
+//         this.health = health
+//     }
+// }
 
-const newBoss = new Pet(100)
+// const newBoss = new Pet(100)
 
-const lessPlayerHealth = () => {
-    const newHealth = newBoss.health -= 16.67;
-    updatePlayerHealth(newHealth);
-  };
+// const lessPlayerHealth = () => {
+//     const newHealth = newBoss.health -= 16.67;
+//     updatePlayerHealth(newHealth);
+//   };
 
-  const updatePlayerHealth = (healthLeft) => {
-    const $healthBar = $(".healthBar");
-    $healthBar.text(newBoss.health + "%");
-    $healthBar.css("width", 6 * healthLeft);
-  };
+//   const updatePlayerHealth = (healthLeft) => {
+//     const $healthBar = $(".healthBar");
+//     $healthBar.text(newBoss.health + "%");
+//     $healthBar.css("width", 6 * healthLeft);
+//   };
+
+  class ProgressBar {
+      constructor (element, initialValue = 0) {
+          this.valueElem = element.querySelector('.progress-bar-value');
+          this.fillElem = element.querySelector('.progress-bar-fill');
+
+          this.setValue(initialValue);
+      }
+
+      setValue (newValue) {
+          if (newValue < 0) {
+              newValue = 0
+          }
+
+          if (newValue > 100) {
+              newValue = 100;
+          }
+          this.value = newValue
+          this.update();
+        }
+
+        update() {
+            const percentage = this.value + '%';
+
+            this.fillElem.style.width = percentage;
+            this.valueElem.textContent = percentage;
+        }
+
+  }
+
+//   const resultTitle = document.querySelector('#result')
+//   const pb1 = new ProgressBar(document.querySelector('.progress-bar'), cardsWon.textContent)
 
 
 
