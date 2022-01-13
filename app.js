@@ -163,19 +163,20 @@ function flipCard() {
         if (--timer < 0) {
             timer = duration;
         }
-
-        if (timer > 1) {
-            window.clearInterval(startTimer());
-            alert("time is up")
-        }
     }, 1000);
 }
 
 window.onload = function () {
-    var fiveMinutes = 60 * 5,
+    var fiveMinutes = 60 * 0.1,
         display = document.querySelector('#time');
     startTimer(fiveMinutes, display);
 };
+
+function stopTimer() {
+    if (timer < 1) {
+        alert("stop")
+    }
+}
 
 
 
