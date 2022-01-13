@@ -163,6 +163,11 @@ function flipCard() {
         if (--timer < 0) {
             timer = duration;
         }
+
+        if (timer > 1) {
+            window.clearInterval(startTimer());
+            alert("time is up")
+        }
     }, 1000);
 }
 
