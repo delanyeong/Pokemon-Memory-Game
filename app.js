@@ -162,7 +162,7 @@ function flipCard() {
   
       display.textContent = minutes + ":" + seconds;
   
-      if (--timer < 0) {
+      if (--timer < 0 || cardsWon.length === cardArray.length/2) {
         timer = duration;
         
         // clear the interal
@@ -180,10 +180,7 @@ function flipCard() {
     var time = 300,
       display = document.querySelector('#time');
     startTimer(time, display, function() { alert("Time's Up!"); })
-    if (cardsWon.length === cardArray.length/2) {
-        clearInterval(myInterval)
     };
-  };
 
 
 
