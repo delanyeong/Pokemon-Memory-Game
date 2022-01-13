@@ -102,6 +102,7 @@ function checkForMatch() {
     resultDisplay.textContent = cardsWon.length
     if  (cardsWon.length === cardArray.length/2) {
       resultDisplay.textContent = 'Congratulations! You found them all!'
+      reset();
     }
   }
 
@@ -150,38 +151,43 @@ function flipCard() {
 
   //timer
   function startTimer(duration, display, callback) {
-  var timer = duration,
-    minutes, seconds;
-
-  var myInterval = setInterval(function() {
-    minutes = parseInt(timer / 60, 10)
-    seconds = parseInt(timer % 60, 10);
-
-    minutes = minutes < 10 ? "0" + minutes : minutes;
-    seconds = seconds < 10 ? "0" + seconds : seconds;
-
-    display.textContent = minutes + ":" + seconds;
-
-    if (--timer < 0) {
-      timer = duration;
-      
-      // clear the interal
-      clearInterval(myInterval);
-
-      // use the callback
-      if(callback) {
-          callback();
+    var timer = duration,
+      minutes, seconds;
+  
+    var myInterval = setInterval(function() {
+      minutes = parseInt(timer / 60, 10)
+      seconds = parseInt(timer % 60, 10);
+  
+      minutes = minutes < 10 ? "0" + minutes : minutes;
+      seconds = seconds < 10 ? "0" + seconds : seconds;
+  
+      display.textContent = minutes + ":" + seconds;
+  
+      if (--timer < 0) {
+        timer = duration;
+        
+        // clear the interal
+        clearInterval(myInterval);
+  
+        // use the callback
+        if(callback) {
+            callback();
+        }
       }
-    }
-  }, 1000);
-}
-
-window.onload = function() {
-  var time = 5,
-    display = document.querySelector('#time');
-  startTimer(time, display, function() { alert('done'); });
-};
-
+    }, 1000);
+  }
+  
+  window.onload = function() {
+    var time = 300,
+      display = document.querySelector('#time');
+    startTimer(time, display, function() { alert("Time's Up!"); });
+  };
+  
+  function reset() {
+    var time = 0,
+      display = document.querySelector('#time');
+    startTimer(time, display, function() { alert("Congrats!"); });
+  };
 
 
 
