@@ -149,7 +149,7 @@ function flipCard() {
   }
 
   //timer
-  function startTimer(duration, display, callback) {
+  function startTimer(duration, display) {
     var timer = duration,
       minutes, seconds;
   
@@ -162,16 +162,16 @@ function flipCard() {
   
       display.textContent = minutes + ":" + seconds;
   
-      if (--timer < 0 || cardsWon.length === cardArray.length/2) {
+      if (--timer < 0) {
         timer = duration;
         
         // clear the interal
         clearInterval(myInterval);
-  
-        // use the callback
-        if(callback) {
-            callback();
-        }
+        alert("Time's Up!")
+      } else if (cardsWon.length === cardArray.length/2) {
+        timer = duration;
+        clearInterval(myInterval);
+        alert("Congrats!")
       }
     }, 1000);
   }
@@ -179,7 +179,7 @@ function flipCard() {
   window.onload = function() {
     var time = 300,
       display = document.querySelector('#time');
-    startTimer(time, display, function() { alert("Time's Up!"); })
+    startTimer(time, display)
     };
 
 
