@@ -102,7 +102,6 @@ function checkForMatch() {
     resultDisplay.textContent = cardsWon.length
     if  (cardsWon.length === cardArray.length/2) {
       resultDisplay.textContent = 'Congratulations! You found them all!'
-      reset();
     }
   }
 
@@ -180,13 +179,10 @@ function flipCard() {
   window.onload = function() {
     var time = 300,
       display = document.querySelector('#time');
-    startTimer(time, display, function() { alert("Time's Up!"); });
-  };
-  
-  function reset() {
-    var time = 0,
-      display = document.querySelector('#time');
-    startTimer(time, display, function() { alert("Congrats!"); });
+    startTimer(time, display, function() { alert("Time's Up!"); })
+    if (cardsWon.length === cardArray.length/2) {
+        clearInterval(myInterval)
+    };
   };
 
 
