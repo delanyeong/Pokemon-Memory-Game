@@ -59,14 +59,6 @@ document.addEventListener('DOMContentLoaded', () => {
             img: 'images/fries.png'
         },
         {
-            name: 'fries',
-            img: 'images/fries.png'
-        },
-        {
-            name: 'cheeseburger',
-            img: 'images/cheeseburger.png'
-        },
-        {
             name: 'cheeseburger',
             img: 'images/cheeseburger.png'
         },
@@ -75,28 +67,12 @@ document.addEventListener('DOMContentLoaded', () => {
             img: 'images/hotdog.png'
         },
         {
-            name:'hotdog',
-            img:'images/hotdog.png'
-        },
-        {
             name:'ice-cream',
             img:'images/ice-cream.png'  
         },
         {
-            name:'ice-cream',
-            img:'images/ice-cream.png'
-        },
-        {
             name:'milkshake',
             img:'images/milkshake.png'
-        },
-        {
-            name:'milkshake',
-            img:'images/milkshake.png'
-        },
-        {
-            name:'pizza',
-            img:'images/pizza.png'
         },
         {
             name:'pizza',
@@ -187,7 +163,8 @@ function checkForMatch() {
     resultDisplay.textContent = cardsWon.length + totalResult
     if  (cardsWon.length === cardArray.length/2) {
       resultDisplay.textContent = 'Congratulations! You found them all!'
-      boss.setAttribute('src', 'images/white.png')
+      ++bossId
+      boss.setAttribute('src', bossArray[bossId].img)
     }
   }
 
