@@ -240,6 +240,7 @@ function flipCard() {
         setTimeout(function() { alert("Congrats!") }, 500)
         if (bossId === bossArray.length - 2) {
             startButton.textContent = 'Restart'
+            boss.setAttribute('src', bossArray[bossArray.length-1].img) //so that last pic appears, before that no appearing
         } else {
             ++bossId
             boss.setAttribute('src', bossArray[bossId].img)
@@ -249,13 +250,18 @@ function flipCard() {
   }
 
   function startGame() {
+    startButton.textContent = 'Reset'
     if(startButton.textContent === 'Restart') {
-        bossId = 0
-        startButton.textContent = 'Start'
-        totalResult = 0
+        bossId = 0                                  //what start button after restart appears; start will reappear and score 0
+        startButton.textContent = 'Reset'
+        resultDisplay.textContent = 0
     }
-    else if (bossId != 0) {
+    else if (bossId != 0 && cardsWon.length === cardArray.length/2) { //what start button do to go next level; but not allowing if not finished
         ++bossId
+    } else if (cardsWon.length !== cardArray.length/2) {              //what start button do when want to reset halfway
+        bossId = 0
+        resultDisplay.textContent = 0
+        time = 300
     }
 
     cardArray.sort(() => 0.5 - Math.random()) //to reset and mix up the positions END
