@@ -186,9 +186,9 @@ function flipCard() {
   }
 
   function startGame() {
-    //cardArray.sort(() => 0.5 - Math.random()) //to reset and mix up the positions END
+    cardArray.sort(() => 0.5 - Math.random()) //to reset and mix up the positions END
     // Random the cards
-    shuffle(cardArray)
+    //shuffle(cardArray)
 
     // Set cards on grid to default
     const cards = grid.children
