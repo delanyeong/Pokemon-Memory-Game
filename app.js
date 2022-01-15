@@ -200,7 +200,8 @@ function flipCard() {
     cardsChosen = []
     cardsChosenId = []
     cardsWon = []
-    
+
+    // Reset progress bar
     pb1.setValue(Math.floor(cardsWon.length*100/6))
 
     var time = 300,
