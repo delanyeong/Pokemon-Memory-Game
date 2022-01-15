@@ -84,6 +84,7 @@ class ProgressBar {
 
 const grid = document.querySelector('.grid')
 const resultDisplay = document.querySelector('#result')
+let result = 0;
 let cardsChosen = []
 let cardsChosenId = []
 let cardsWon = []
@@ -129,7 +130,7 @@ function checkForMatch() {
 
     cardsChosen = []
     cardsChosenId = []
-    resultDisplay.textContent = cardsWon.length
+    resultDisplay.textContent = cardsWon.length + result
     if  (cardsWon.length === cardArray.length/2) {
       resultDisplay.textContent = 'Congratulations! You found them all!'
     }
