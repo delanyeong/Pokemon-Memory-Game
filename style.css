@@ -1,5 +1,5 @@
 #div1 {
-    float: left
+    margin: auto;
 }
 
 .grid {
@@ -16,10 +16,7 @@
     justify-content: center;
     align-items: center;
     text-align: center;
-}
-
-#div2 {
-    float: center;
+    margin: auto;
 }
 
 .progress-bar {
@@ -27,6 +24,7 @@
     width: 300px;
     height: 40px;
     border: 1px solid #000;
+    margin: auto;
 }
 
 .progress-bar-fill {
