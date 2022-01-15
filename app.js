@@ -230,6 +230,11 @@ function flipCard() {
         cards[i].addEventListener('click', flipCard) //invoke flipcard function
     }
 
+    if(cardsWon.length === cardArray.length/2) {
+        ++bossId
+        boss.setAttribute('src', bossArray[bossId].img)
+    }
+
     totalResult += cardsWon.length
     
     // Reset arrays
