@@ -196,6 +196,11 @@ function flipCard() {
         cards[i].addEventListener('click', flipCard) //invoke flipcard function
     }
     
+    // Reset arrays
+    cardsChosen = []
+    cardsChosenId = []
+    cardsWon = []
+    
     pb1.setValue(Math.floor(cardsWon.length*100/6))
 
     var time = 300,
