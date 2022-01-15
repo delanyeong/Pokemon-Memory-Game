@@ -145,13 +145,13 @@ function checkForMatch() {
       alert('You have clicked the same image!')
     }
     else if (cardsChosen[0] === cardsChosen[1]) {
-      alert('You found a match')
       cards[optionOneId].setAttribute('src', 'images/white.png')
       cards[optionTwoId].setAttribute('src', 'images/white.png')
       cards[optionOneId].removeEventListener('click', flipCard)
       cards[optionTwoId].removeEventListener('click', flipCard)
       cardsWon.push(cardsChosen)
       pb1.setValue(Math.floor(cardsWon.length*100/6))
+      setTimeout(function() { alert('You found a match') }, 500)
     } else {
       cards[optionOneId].setAttribute('src', 'images/blank.png')
       cards[optionTwoId].setAttribute('src', 'images/blank.png')
@@ -204,7 +204,7 @@ function flipCard() {
       } else if (cardsWon.length === cardArray.length/2) {
         timer = duration;
         clearInterval(myInterval);
-        alert("Congrats!")
+        setTimeout(function() { alert("Congrats!") }, 500)
         if (bossId === bossArray.length - 1) {
             startButton.textContent = 'Restart'
         } else {
