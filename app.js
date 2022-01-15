@@ -110,6 +110,7 @@ class ProgressBar {
 
 }
 
+const startButton = document.querySelector('#startButton')
 const grid = document.querySelector('.grid')
 const resultDisplay = document.querySelector('#result')
 let totalResult = 0;
@@ -204,8 +205,12 @@ function flipCard() {
         timer = duration;
         clearInterval(myInterval);
         alert("Congrats!")
-        bossId = bossId === bossArray.length - 1 ? 0 : bossId += 1
-        boss.setAttribute('src', bossArray[bossId].img)
+        if (bossId === bossArray.length - 1) {
+            startButton.textContent = 'Restart'
+        } else {
+            ++bossId
+            boss.setAttribute('src', bossArray[bossId].img)
+        } 
       }
     }, 1000);
   }
@@ -218,6 +223,8 @@ function flipCard() {
   }
 
   function startGame() {
+    
+
     cardArray.sort(() => 0.5 - Math.random()) //to reset and mix up the positions END
     // Random the cards
     //shuffle(cardArray)
@@ -250,7 +257,7 @@ function flipCard() {
     startTimer(time, display)
   }
   
-  document.querySelector('#startButton').addEventListener("click", startGame)
+  startButton.addEventListener("click", startGame)
   
   createBoard();
 
