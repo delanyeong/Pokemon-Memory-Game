@@ -177,8 +177,11 @@ function flipCard() {
   function startGame() {
     cardArray.sort(() => 0.5 - Math.random()) //to reset and mix up the positions END
 
-    for(let i = 0; i < grid.children.length; i++) {
-        grid.children.setAttribute('src', 'images/blank.png')
+    const cards = grid.children
+    for(let i = 0; i < cards.length; i++) {
+        console.log(cards[i])
+        cards[i].setAttribute('src', 'images/blank.png')
+        cards[i].addEventListener('click', flipCard) //invoke flipcard function
     }
     
     var time = 300,
@@ -186,7 +189,8 @@ function flipCard() {
     startTimer(time, display)
   }
   
+  document.querySelector('#startButton').addEventListener("click", startGame)
   
-createBoard();
+  createBoard();
 
 })
