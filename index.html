@@ -7,22 +7,29 @@
         <script src="app.js" charset="utf-8"></script>
     </head>
     <body>
-        <h3>Score:<span id="result"></span></h3>
+        <div style="text-align: center;">
+            <h3>Total Score:<span id="result"></span></h3>
 
-        <div class="grid", id=div1>
+            <div class="boss">
+                <img class="mugshot" src="images/fries.png">
+            </div>
+
+            <h2 id="title">Who's that Pokemon?</h2>
+
+            <div>
+                <button id="startButton">Start</button>
+            </div>
+
+            <div class="grid", id="div1">
+            </div>
+
+            <div><span id="time">00:00</span></div>
+
+            <div class="progress-bar">
+                <div class="progress-bar-value">0%</div>
+                <div class="progress-bar-fill"></div>
+            </div>
         </div>
-
-        <div class="boss", id=div2>
-            <img class="mugshot" src="images/minion.png">
-        </div>
-
-        <div><span id="time">00:00</span></div>
-
-        <h2 id="title">Progress</h2>
-        <div class="progress-bar">
-            <div class="progress-bar-value">0%</div>
-            <div class="progress-bar-fill"></div>
-        </div>
-
     </body>
 </html>
+
