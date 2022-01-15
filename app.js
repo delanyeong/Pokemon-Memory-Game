@@ -195,7 +195,7 @@ function checkForMatch() {
     cardsChosenId = []
     resultDisplay.textContent = cardsWon.length + totalResult
     if  (cardsWon.length === cardArray.length/2) {
-        titleDisplay.textContent = 'Congratulations! You found ' + bossArray[bossId].name + '!'
+        titleDisplay.textContent = 'Congratulations! You caught ' + bossArray[bossId].name + '!'
     }
   }
 
