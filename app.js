@@ -136,7 +136,7 @@ function createBoard() {
 
 //check for matches
 function checkForMatch() {
-    const cards = document.querySelectorAll('img')
+    const cards = grid.children
     const optionOneId = cardsChosenId[0]
     const optionTwoId = cardsChosenId[1]
     
