@@ -175,10 +175,17 @@ function flipCard() {
       }
     }, 1000);
   }
-  
+
+  function shuffle (array) {
+      for(let i = array.length - 1; i > 0 ; i--) {
+          let j = Math.floor(Math.random() * (i+1))
+          [array[i], array[j]] = [array[j], array[i]]
+      }
+  }
 
   function startGame() {
-    cardArray.sort(() => 0.5 - Math.random()) //to reset and mix up the positions END
+    //cardArray.sort(() => 0.5 - Math.random()) //to reset and mix up the positions END
+    shuffle(cardArray);
 
     const cards = grid.children
     for(let i = 0; i < cards.length; i++) {
