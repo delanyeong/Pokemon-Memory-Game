@@ -84,7 +84,7 @@ class ProgressBar {
 
 const grid = document.querySelector('.grid')
 const resultDisplay = document.querySelector('#result')
-let result = 0;
+let totalResult = 0;
 let cardsChosen = []
 let cardsChosenId = []
 let cardsWon = []
@@ -130,7 +130,7 @@ function checkForMatch() {
 
     cardsChosen = []
     cardsChosenId = []
-    resultDisplay.textContent = cardsWon.length + result
+    resultDisplay.textContent = cardsWon.length + totalResult
     if  (cardsWon.length === cardArray.length/2) {
       resultDisplay.textContent = 'Congratulations! You found them all!'
     }
@@ -197,6 +197,8 @@ function flipCard() {
         cards[i].setAttribute('src', 'images/blank.png')
         cards[i].addEventListener('click', flipCard) //invoke flipcard function
     }
+
+    totalResult += cardsWon.length
     
     // Reset arrays
     cardsChosen = []
