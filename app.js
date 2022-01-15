@@ -88,7 +88,7 @@ function checkForMatch() {
       cards[optionOneId].removeEventListener('click', flipCard)
       cards[optionTwoId].removeEventListener('click', flipCard)
       cardsWon.push(cardsChosen)
-      const pb1 = new ProgressBar(document.querySelector('.progress-bar'), Math.floor(cardsWon.length*100/6))
+      
     } else {
       cards[optionOneId].setAttribute('src', 'images/blank.png')
       cards[optionTwoId].setAttribute('src', 'images/blank.png')
@@ -185,7 +185,7 @@ function flipCard() {
 
   function startGame() {
     //cardArray.sort(() => 0.5 - Math.random()) //to reset and mix up the positions END
-    shuffle(cardArray);
+    shuffle(cardArray)
 
     const cards = grid.children
     for(let i = 0; i < cards.length; i++) {
