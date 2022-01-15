@@ -225,9 +225,9 @@ function flipCard() {
         ++bossId
     }
 
-    cardArray.sort(() => 0.5 - Math.random()) //to reset and mix up the positions END
+    //cardArray.sort(() => 0.5 - Math.random()) //to reset and mix up the positions END
     // Random the cards
-    //shuffle(cardArray)
+    shuffle(cardArray)
 
     // Set cards on grid to default
     const cards = grid.children
@@ -253,6 +253,13 @@ function flipCard() {
     display = document.querySelector('#time');
     startTimer(time, display)
   }
+
+  function shuffle (array) {
+    for(let i = array.length - 1; i > 0 ; i--) {
+        let j = Math.floor(Math.random() * (i+1))
+        [array[i], array[j]] = [array[j], array[i]]
+    }
+}
   
   startButton.addEventListener("click", startGame)
   
