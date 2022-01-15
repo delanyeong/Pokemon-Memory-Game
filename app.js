@@ -223,7 +223,14 @@ function flipCard() {
   }
 
   function startGame() {
-    
+    if(startButton.textContent === 'Restart') {
+        bossId = 0
+        startButton.textContent = 'Start'
+        totalResult = 0
+    }
+    else {
+        ++bossId
+    }
 
     cardArray.sort(() => 0.5 - Math.random()) //to reset and mix up the positions END
     // Random the cards
@@ -236,10 +243,7 @@ function flipCard() {
         cards[i].addEventListener('click', flipCard) //invoke flipcard function
     }
 
-    if(cardsWon.length === cardArray.length/2) {
-        bossId = bossId === bossArray.length - 1 ? 0 : bossId += 1
-        boss.setAttribute('src', bossArray[bossId].img)
-    }
+    boss.setAttribute('src', bossArray[bossId].img)
 
     totalResult += cardsWon.length
     
