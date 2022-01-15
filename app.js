@@ -90,7 +90,7 @@ function checkForMatch() {
       cards[optionOneId].removeEventListener('click', flipCard)
       cards[optionTwoId].removeEventListener('click', flipCard)
       cardsWon.push(cardsChosen)
-      
+      pb1.setValue(Math.floor(cardsWon.length*100/6))
     } else {
       cards[optionOneId].setAttribute('src', 'images/blank.png')
       cards[optionTwoId].setAttribute('src', 'images/blank.png')
@@ -196,6 +196,8 @@ function flipCard() {
         cards[i].addEventListener('click', flipCard) //invoke flipcard function
     }
     
+    pb1.setValue(Math.floor(cardsWon.length*100/6))
+
     var time = 300,
     display = document.querySelector('#time');
     startTimer(time, display)
