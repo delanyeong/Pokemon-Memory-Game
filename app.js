@@ -125,7 +125,7 @@ boss.setAttribute('src', bossArray[bossId].img)
 function createBoard() {
     for (let i = 0; i < cardArray.length; i++) {
         var card = document.createElement('img')
-        card.setAttribute('src', 'images/blank.png')
+        card.setAttribute('src', 'images/white.png')
         card.setAttribute('data-id', i)
         card.addEventListener('click', flipCard) //invoke flipcard function
         grid.appendChild(card)
