@@ -175,23 +175,18 @@ function flipCard() {
   }
 
   function startGame() {
-      cardArray.sort(() => 0.5 - Math.random()) //to reset and mix up the positions END
+    cardArray.sort(() => 0.5 - Math.random()) //to reset and mix up the positions END
 
-      startTimer(time, display)
+    for(let i = 0; i < grid.children.length; i++) {
+        grid.children.setAttribute('src', 'images/blank.png')
+    }
+    
+    var time = 300,
+    display = document.querySelector('#time');
+    startTimer(time, display)
   }
   
-  window.onload = function() {
-    var time = 300,
-      display = document.querySelector('#time');
-    
-    };
-
-
-
-
-
-
-
+  
 createBoard();
 
 })
