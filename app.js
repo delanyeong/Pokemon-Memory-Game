@@ -205,7 +205,7 @@ function flipCard() {
         timer = duration;
         clearInterval(myInterval);
         setTimeout(function() { alert("Congrats!") }, 500)
-        if (bossId === bossArray.length - 1) {
+        if (bossId === bossArray.length - 2) {
             startButton.textContent = 'Restart'
         } else {
             ++bossId
@@ -228,7 +228,7 @@ function flipCard() {
         startButton.textContent = 'Start'
         totalResult = 0
     }
-    else {
+    else if (bossId != 0) {
         ++bossId
     }
 
