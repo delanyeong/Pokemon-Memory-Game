@@ -175,11 +175,16 @@ function flipCard() {
       }
     }, 1000);
   }
+
+  function startGame() {
+      
+      startTimer(time, display)
+  }
   
   window.onload = function() {
     var time = 300,
       display = document.querySelector('#time');
-    startTimer(time, display)
+    
     };
 
 
