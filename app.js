@@ -127,7 +127,6 @@ function createBoard() {
         var card = document.createElement('img')
         card.setAttribute('src', 'images/white.png')
         card.setAttribute('data-id', i)
-        card.addEventListener('click', flipCard) //invoke flipcard function
         grid.appendChild(card)
     }
 }
