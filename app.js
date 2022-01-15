@@ -55,28 +55,60 @@ document.addEventListener('DOMContentLoaded', () => {
     //card options
     const bossArray = [
         {
-            name: 'fries',
-            img: 'images/fries.png'
+            name: 'Gyarados',
+            img: 'images/shgyarados.png'
         },
         {
-            name: 'cheeseburger',
-            img: 'images/cheeseburger.png'
+            name: 'Gyarados',
+            img: 'images/gyarados.png'
         },
         {
-            name:'hotdog',
-            img: 'images/hotdog.png'
+            name:'Bruxish',
+            img: 'images/shbruxish.png'
         },
         {
-            name:'ice-cream',
-            img:'images/ice-cream.png'  
+            name:'Bruxish',
+            img:'images/bruxish.png'  
         },
         {
-            name:'milkshake',
-            img:'images/milkshake.png'
+            name:'Loudred',
+            img:'images/shloudred.png'
         },
         {
-            name:'pizza',
-            img:'images/pizza.png'
+            name:'Loudred',
+            img:'images/loudred.png'
+        },
+        {
+            name:'Gastly',
+            img:'images/shgastly.png'
+        },
+        {
+            name:'Gastly',
+            img:'images/gastly.png'
+        },
+        {
+            name:'Quagsire',
+            img:'images/shquagsire.png'
+        },
+        {
+            name:'Quagsire',
+            img:'images/quagsire.png'
+        },
+        {
+            name:'Gastly again!',
+            img:'images/shgastly2.png'
+        },
+        {
+            name:'Gastly again!',
+            img:'images/gastly2.png'
+        },
+        {
+            name:'Psyduck',
+            img:'images/shpsyduck.png'
+        },
+        {
+            name:'Psyduck',
+            img:'images/psyduck.png'
         }
     ]
 
