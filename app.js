@@ -53,34 +53,34 @@ document.addEventListener('DOMContentLoaded', () => {
     ]
 
     //Constructor for Healthbar
-  class ProgressBar {
-      constructor (element, initialValue = 0) {
-          this.valueElem = element.querySelector('.progress-bar-value');
-          this.fillElem = element.querySelector('.progress-bar-fill');
+class ProgressBar {
+    constructor (element, initialValue = 0) {
+        this.valueElem = element.querySelector('.progress-bar-value');
+        this.fillElem = element.querySelector('.progress-bar-fill');
 
-          this.setValue(initialValue);
+        this.setValue(initialValue);
+    }
+
+    setValue (newValue) {
+        if (newValue < 0) {
+            newValue = 0
+        }
+
+        if (newValue > 100) {
+            newValue = 100;
+        }
+        this.value = newValue
+        this.update();
       }
 
-      setValue (newValue) {
-          if (newValue < 0) {
-              newValue = 0
-          }
+      update() {
+          const percentage = this.value + '%';
 
-          if (newValue > 100) {
-              newValue = 100;
-          }
-          this.value = newValue
-          this.update();
-        }
+          this.fillElem.style.width = percentage;
+          this.valueElem.textContent = percentage;
+      }
 
-        update() {
-            const percentage = this.value + '%';
-
-            this.fillElem.style.width = percentage;
-            this.valueElem.textContent = percentage;
-        }
-
-  }
+}
 
 const grid = document.querySelector('.grid')
 const resultDisplay = document.querySelector('#result')
@@ -193,7 +193,6 @@ function flipCard() {
     // Set cards on grid to default
     const cards = grid.children
     for(let i = 0; i < cards.length; i++) {
-        console.log(cards[i])
         cards[i].setAttribute('src', 'images/blank.png')
         cards[i].addEventListener('click', flipCard) //invoke flipcard function
     }
