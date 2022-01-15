@@ -185,6 +185,7 @@ function checkForMatch() {
     resultDisplay.textContent = cardsWon.length + totalResult
     if  (cardsWon.length === cardArray.length/2) {
       resultDisplay.textContent = 'Congratulations! You found them all!'
+      boss.setAttribute('src', 'images/white.png')
     }
   }
 
