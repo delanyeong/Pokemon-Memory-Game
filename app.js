@@ -187,8 +187,10 @@ function flipCard() {
 
   function startGame() {
     //cardArray.sort(() => 0.5 - Math.random()) //to reset and mix up the positions END
+    // Random the cards
     shuffle(cardArray)
 
+    // Set cards on grid to default
     const cards = grid.children
     for(let i = 0; i < cards.length; i++) {
         console.log(cards[i])
@@ -204,6 +206,7 @@ function flipCard() {
     // Reset progress bar
     pb1.setValue(Math.floor(cardsWon.length*100/6))
 
+    // Reset timer
     var time = 300,
     display = document.querySelector('#time');
     startTimer(time, display)
