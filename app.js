@@ -3,52 +3,52 @@ document.addEventListener('DOMContentLoaded', () => {
     //card options
     const cardArray = [
         {
-            name: 'fries',
-            img: 'images/fries.png'
+            name: 'greenball',
+            img: 'images/greenball.png'
         },
         {
-            name: 'fries',
-            img: 'images/fries.png'
+            name: 'greenball',
+            img: 'images/greenball.png'
         },
         {
-            name: 'cheeseburger',
-            img: 'images/cheeseburger.png'
+            name: 'heartball',
+            img: 'images/heartball.png'
         },
         {
-            name: 'cheeseburger',
-            img: 'images/cheeseburger.png'
+            name: 'heartball',
+            img: 'images/heartball.png'
         },
         {
-            name:'hotdog',
-            img: 'images/hotdog.png'
+            name:'pinkball',
+            img: 'images/pinkball.png'
         },
         {
-            name:'hotdog',
-            img:'images/hotdog.png'
+            name:'pinkball',
+            img:'images/pinkball.png'
         },
         {
-            name:'ice-cream',
-            img:'images/ice-cream.png'  
+            name:'bredball',
+            img:'images/bredball.png'  
         },
         {
-            name:'ice-cream',
-            img:'images/ice-cream.png'
+            name:'bredball',
+            img:'images/bredball.png'
         },
         {
-            name:'milkshake',
-            img:'images/milkshake.png'
+            name:'blackball',
+            img:'images/blackball.png'
         },
         {
-            name:'milkshake',
-            img:'images/milkshake.png'
+            name:'blackball',
+            img:'images/blackball.png'
         },
         {
-            name:'pizza',
-            img:'images/pizza.png'
+            name:'blueball',
+            img:'images/blueball.png'
         },
         {
-            name:'pizza',
-            img:'images/pizza.png'
+            name:'blueball',
+            img:'images/blueball.png'
         }
     ]
 
