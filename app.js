@@ -146,13 +146,14 @@ function flipCard() {
 
   }
 
+  var myInterval = null;
   //timer
   function startTimer(duration, display) {
+    clearInterval(myInterval);
     var timer = duration,
       minutes, seconds;
   
-    var myInterval = setInterval(function() {
-        
+    myInterval = setInterval(function() {
       minutes = parseInt(timer / 60, 10)
       seconds = parseInt(timer % 60, 10);
   
@@ -174,6 +175,7 @@ function flipCard() {
       }
     }, 1000);
   }
+  
 
   function startGame() {
     cardArray.sort(() => 0.5 - Math.random()) //to reset and mix up the positions END
