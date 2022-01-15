@@ -52,8 +52,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     ]
 
-cardArray.sort(() => 0.5 - Math.random()) //to reset and mix up the positions END
-
 const grid = document.querySelector('.grid')
 const resultDisplay = document.querySelector('#result')
 let cardsChosen = []
@@ -177,7 +175,8 @@ function flipCard() {
   }
 
   function startGame() {
-      
+      cardArray.sort(() => 0.5 - Math.random()) //to reset and mix up the positions END
+
       startTimer(time, display)
   }
   
