@@ -57,6 +57,8 @@ const resultDisplay = document.querySelector('#result')
 let cardsChosen = []
 let cardsChosenId = []
 let cardsWon = []
+const pb1 = new ProgressBar(document.querySelector('.progress-bar'), Math.floor(cardsWon.length*100/6))
+
 
 //create your board
 function createBoard() {
