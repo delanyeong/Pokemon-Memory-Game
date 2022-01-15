@@ -142,6 +142,8 @@ let cardsChosenId = []
 let cardsWon = []
 const pb1 = new ProgressBar(document.querySelector('.progress-bar'), Math.floor(cardsWon.length*100/6))
 const boss = document.querySelector('.mugshot')
+let bossId = 0;
+boss.setAttribute('src', bossArray[bossId].img)
 
 //create your board
 function createBoard() {
