@@ -163,7 +163,7 @@ function checkForMatch() {
     resultDisplay.textContent = cardsWon.length + totalResult
     if  (cardsWon.length === cardArray.length/2) {
       resultDisplay.textContent = 'Congratulations! You found them all!'
-      ++bossId
+      bossId = bossId === bossArray.length - 1 ? 0 : bossId += 1
       boss.setAttribute('src', bossArray[bossId].img)
     }
   }
@@ -231,7 +231,7 @@ function flipCard() {
     }
 
     if(cardsWon.length === cardArray.length/2) {
-        ++bossId
+        bossId = bossId === bossArray.length - 1 ? 0 : bossId += 1
         boss.setAttribute('src', bossArray[bossId].img)
     }
 
