@@ -163,7 +163,7 @@ function checkForMatch() {
     cardsChosenId = []
     resultDisplay.textContent = cardsWon.length + totalResult
     if  (cardsWon.length === cardArray.length/2) {
-      titleDisplay.textContent = 'Congratulations! You found ' + bossArray[bossId].name + '!'
+        titleDisplay.textContent = 'Congratulations! You found ' + bossArray[bossId].name + '!'
     }
   }
 
@@ -245,6 +245,9 @@ function flipCard() {
     cardsChosen = []
     cardsChosenId = []
     cardsWon = []
+
+    // Reset title
+    titleDisplay.textContent = "Who's that Pokemon?"
 
     // Reset progress bar
     pb1.setValue(Math.floor(cardsWon.length*100/6))
