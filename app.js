@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const splash = document.querySelector('.splash')
     
-    enterButton.addEventListener("click", function() {
+    splash.addEventListener("click", function() {
         splash.classList.add('display-none')
     }
     )
@@ -149,23 +149,22 @@ class ProgressBar {
 
 }
 
-var bgMusic = new Audio('audio/background.mp3')
+var bgMusic = new Audio('audio/instrumental.mp3')
 bgMusic.loop = true
 
 var whoThat = new Audio('audio/whothat.mp3')
 
-var cardSound = new Audio ('audio/cardpress.mp3')
-cardSound.playbackRate = 1.6
+var cardSound = new Audio ('audio/cardpress2.mp3')
+// cardSound.playbackRate = 1.6
 
-var pokeFound = new Audio ('audio/found.mp3')
+var pokeFound = new Audio ('audio/found2.mp3')
 
 var volume = document.querySelector("#volume-control");
-volume.defaultValue = 15
+volume.defaultValue = 10
 volume.addEventListener("input", function(e) {
     bgMusic.volume = e.currentTarget.value / 100;
 })
-var inputEvent = new Event('input')
-volume.dispatchEvent(inputEvent)
+volume.dispatchEvent(new Event('input'))
 
 const startButton = document.querySelector('#startButton')
 const resetButton = document.querySelector('#resetButton')
@@ -251,6 +250,8 @@ function flipCard() {
   
   function startTimer(duration, display) {
     clearInterval(myInterval);
+    display.style.color = "#FFFFFF"
+    display.style.visibility = 'visible'
     var timer = duration,
       minutes, seconds;
   
@@ -262,6 +263,15 @@ function flipCard() {
       seconds = seconds < 10 ? "0" + seconds : seconds;
   
       display.textContent = minutes + ":" + seconds;
+
+      if (timer <= 30){
+        display.style.color = "#FF0000"
+        display.style.visibility = 'visible'
+        if(timer > 0 && cardsWon.length < cardArray.length/2)
+            setTimeout(function(){ display.style.visibility = 'hidden' }, 800)
+      }
+
+      
   
       if (--timer < 0) {
         timer = duration;
@@ -269,16 +279,21 @@ function flipCard() {
         // Time Stop when time is up
         clearInterval(myInterval);
         alertDisplay.textContent = "Time's Up!"
+        startButton.textContent = 'Restart'
+        congratulations()
+        display.style.visibility = 'visible'
       } 
       else if (cardsWon.length === cardArray.length/2) { //stop the time when board is cleared (level won)
         timer = duration;
         clearInterval(myInterval);
         setTimeout(function() { alertDisplay.textContent = "Congrats!" }, 500)
-        totalResult += cardsWon.length/6
+        ++totalResult
 
         if (bossId === bossArray.length - 2) { //stop the time when round is won + change button to restart when all boards are cleared
             startButton.textContent = 'Restart'
             boss.setAttribute('src', bossArray[bossArray.length-1].img) //so that last pic appears, before that no appearing
+            congratulations()
+            display.style.visibility = 'visible'
         } else {                              //stop the time when round is won + if condt not true -> next level
             ++bossId
             boss.setAttribute('src', bossArray[bossId].img)
@@ -334,7 +349,7 @@ function flipCard() {
     pb1.setValue(Math.floor(cardsWon.length*100/6))
 
     // Reset timer
-    var time = 120 - (bossId*5)
+    var time = 90 - (bossId*5)
     display = document.querySelector('#time')
     startTimer(time, display)
   }
@@ -356,6 +371,26 @@ function flipCard() {
     }
   }
 //END OF SHUFFLE CARDS
+let closeicon = document.querySelector(".close");
+const modal = document.querySelector("#popup1")
+const congratsMsg = document.querySelector(".content-1")
+
+function congratulations() {
+    congratsMsg.textContent = "Congratulations! You caught " + totalResult + " out of " + bossArray.length / 2 + " Pokemon!"
+
+    // show congratulations modal
+    modal.classList.add("show");
+  
+    //closeicon on modal
+    closeModal();
+  }
+  
+  // @description close icon on modal
+  function closeModal() {
+    closeicon.addEventListener("click", function (e) {
+      modal.classList.remove("show");
+    });
+  }
   
   startButton.addEventListener("click", startGame)
   resetButton.addEventListener("click", resetGame)

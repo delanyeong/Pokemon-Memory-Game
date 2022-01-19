@@ -9,14 +9,11 @@
     <body>
 
         <div class="splash">
-            <h1 class="fade-in">Welcome to the World of Pokemon!
-                <button id="enterButton" class="fade-in">Enter</button>
-            </h1>
-            
+            <h1 class="fade-in overlayText">Click anywhere to continue...</h1>
         </div>
 
         <div style="text-align: center;">
-            <h3>Pokemon Caught:<span id="result"></span></h3>
+            <h3 class="caught">Pokemon Caught:<span id="result"></span></h3>
 
             <div class="boss">
                 <img class="mugshot" src="images/fries.png">
@@ -42,6 +39,16 @@
             </div>
 
             <input type="range" id="volume-control">
+
+            <div id="popup1" class="overlay">
+                <div class="popup">
+                  <h2>Congratulations 🎉</h2>
+                  <a class="close" href=#>×</a>
+                  <div class="content-1">
+                    Congratulations! you're a winner 🎉🎉
+                  </div>
+                </div>
+            </div>
         </div>
     </body>
 </html>
