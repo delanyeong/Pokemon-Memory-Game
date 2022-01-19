@@ -7,8 +7,16 @@
         <script src="app.js" charset="utf-8"></script>
     </head>
     <body>
+
+        <div class="splash">
+            <h1 class="fade-in">Welcome to the World of Pokemon!
+                <button id="enterButton" class="fade-in">Enter</button>
+            </h1>
+            
+        </div>
+
         <div style="text-align: center;">
-            <h3>Total Score:<span id="result"></span></h3>
+            <h3>Pokemon Caught:<span id="result"></span></h3>
 
             <div class="boss">
                 <img class="mugshot" src="images/fries.png">
@@ -18,10 +26,13 @@
 
             <div>
                 <button id="startButton">Start</button>
+                <button id="resetButton">Reset</button>
             </div>
 
             <div class="grid", id="div1">
             </div>
+
+            <h1 id="alert">Gotta Catch 'em All!</h1>
 
             <div><span id="time">00:00</span></div>
 
@@ -29,6 +40,8 @@
                 <div class="progress-bar-value">0%</div>
                 <div class="progress-bar-fill"></div>
             </div>
+
+            <input type="range" id="volume-control">
         </div>
     </body>
 </html>

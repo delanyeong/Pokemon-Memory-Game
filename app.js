@@ -1,5 +1,12 @@
 document.addEventListener('DOMContentLoaded', () => {
 
+    const splash = document.querySelector('.splash')
+    
+    enterButton.addEventListener("click", function() {
+        splash.classList.add('display-none')
+    }
+    )
+
     //card options
     const cardArray = [
         {
@@ -142,10 +149,31 @@ class ProgressBar {
 
 }
 
+var bgMusic = new Audio('audio/background.mp3')
+bgMusic.loop = true
+
+var whoThat = new Audio('audio/whothat.mp3')
+
+var cardSound = new Audio ('audio/cardpress.mp3')
+cardSound.playbackRate = 1.6
+
+var pokeFound = new Audio ('audio/found.mp3')
+
+var volume = document.querySelector("#volume-control");
+volume.defaultValue = 15
+volume.addEventListener("input", function(e) {
+    bgMusic.volume = e.currentTarget.value / 100;
+})
+var inputEvent = new Event('input')
+volume.dispatchEvent(inputEvent)
+
 const startButton = document.querySelector('#startButton')
+const resetButton = document.querySelector('#resetButton')
+let gameReset = false;
 const grid = document.querySelector('.grid')
 const resultDisplay = document.querySelector('#result')
 const titleDisplay = document.querySelector('#title')
+const alertDisplay = document.querySelector('#alert')
 let totalResult = 0;
 let cardsChosen = []
 let cardsChosenId = []
@@ -175,7 +203,7 @@ function checkForMatch() {
     if(optionOneId == optionTwoId) {
       cards[optionOneId].setAttribute('src', 'images/blank.png')
       cards[optionTwoId].setAttribute('src', 'images/blank.png')
-      alert('You have clicked the same image!')
+      alertDisplay.textContent = 'You have clicked the same image!'
     }
     else if (cardsChosen[0] === cardsChosen[1]) {
       cards[optionOneId].setAttribute('src', 'images/white.png')
@@ -184,17 +212,18 @@ function checkForMatch() {
       cards[optionTwoId].removeEventListener('click', flipCard)
       cardsWon.push(cardsChosen)
       pb1.setValue(Math.floor(cardsWon.length*100/6))
-      setTimeout(function() { alert('You found a match') }, 500)
+      setTimeout(function() { alertDisplay.textContent = 'You found a match' }, 500)
     } else {
       cards[optionOneId].setAttribute('src', 'images/blank.png')
       cards[optionTwoId].setAttribute('src', 'images/blank.png')
-      alert('Sorry, try again')
+      alertDisplay.textContent = 'Sorry, try again'
     }
 
     cardsChosen = []
     cardsChosenId = []
-    resultDisplay.textContent = cardsWon.length + totalResult
+    // resultDisplay.textContent = cardsWon.length + totalResult
     if  (cardsWon.length === cardArray.length/2) {
+        resultDisplay.textContent = cardsWon.length/6 + totalResult
         titleDisplay.textContent = 'Congratulations! You caught ' + bossArray[bossId].name + '!'
     }
   }
@@ -203,17 +232,23 @@ function checkForMatch() {
 
 //flip your card
 function flipCard() {
-    var cardId = this.getAttribute('data-id')
-    cardsChosen.push(cardArray[cardId].name)
-    cardsChosenId.push(cardId)
-    this.setAttribute('src', cardArray[cardId].img)
+    if (cardsChosen.length < 2) {
+        var cardId = this.getAttribute('data-id')
+        cardsChosen.push(cardArray[cardId].name)
+        cardsChosenId.push(cardId)
+        this.setAttribute('src', cardArray[cardId].img)
+        cardSound.play()
+    }
     if (cardsChosen.length === 2) {
         setTimeout(checkForMatch, 500)
+        setTimeout(function() {alertDisplay.textContent = "Gotta Catch 'em All!"}, 1500)
     }
 }
 
+
+//TIMER
   var myInterval = null;
-  //timer
+  
   function startTimer(duration, display) {
     clearInterval(myInterval);
     var timer = duration,
@@ -231,38 +266,48 @@ function flipCard() {
       if (--timer < 0) {
         timer = duration;
         
-        // clear the interal
+        // Time Stop when time is up
         clearInterval(myInterval);
-        alert("Time's Up!")
-      } else if (cardsWon.length === cardArray.length/2) {
+        alertDisplay.textContent = "Time's Up!"
+      } 
+      else if (cardsWon.length === cardArray.length/2) { //stop the time when board is cleared (level won)
         timer = duration;
         clearInterval(myInterval);
-        setTimeout(function() { alert("Congrats!") }, 500)
-        if (bossId === bossArray.length - 2) {
+        setTimeout(function() { alertDisplay.textContent = "Congrats!" }, 500)
+        totalResult += cardsWon.length/6
+
+        if (bossId === bossArray.length - 2) { //stop the time when round is won + change button to restart when all boards are cleared
             startButton.textContent = 'Restart'
             boss.setAttribute('src', bossArray[bossArray.length-1].img) //so that last pic appears, before that no appearing
-        } else {
+        } else {                              //stop the time when round is won + if condt not true -> next level
             ++bossId
             boss.setAttribute('src', bossArray[bossId].img)
+            pokeFound.play()
         } 
       }
-    }, 1000);
+    }, 1000); //timer function repeat every second to reflect a timer
   }
+  //END OF TIMER
 
+  //START GAME
   function startGame() {
-    startButton.textContent = 'Reset'
-    if(startButton.textContent === 'Restart') {
+    alertDisplay.textContent = "Gotta Catch 'em All!"
+    if(startButton.textContent === 'Restart' || gameReset) { //gameReset(linked to reset game) so that dont have to hard code the startGame function. if no gameReset condt it will not execute bc only restart condt
         bossId = 0                                  //what start button after restart appears; start will reappear and score 0
-        startButton.textContent = 'Reset'
-        resultDisplay.textContent = 0
+        startButton.textContent = 'Start'
+        totalResult = 0
+        whoThat.play()
     }
     else if (bossId != 0 && cardsWon.length === cardArray.length/2) { //what start button do to go next level; but not allowing if not finished
         ++bossId
-    } else if (cardsWon.length !== cardArray.length/2) {              //what start button do when want to reset halfway
-        bossId = 0
-        resultDisplay.textContent = 0
-        time = 300
+        whoThat.play()
     }
+    else if (bossId === 0) {
+        bgMusic.play()
+        whoThat.play()
+    }
+
+    resultDisplay.textContent = totalResult
 
     cardArray.sort(() => 0.5 - Math.random()) //to reset and mix up the positions END
     // Random the cards
@@ -276,8 +321,6 @@ function flipCard() {
     }
 
     boss.setAttribute('src', bossArray[bossId].img)
-
-    totalResult += cardsWon.length
     
     // Reset arrays
     cardsChosen = []
@@ -291,20 +334,31 @@ function flipCard() {
     pb1.setValue(Math.floor(cardsWon.length*100/6))
 
     // Reset timer
-    var time = 300,
-    display = document.querySelector('#time');
+    var time = 120 - (bossId*5)
+    display = document.querySelector('#time')
     startTimer(time, display)
   }
+  //END OF START GAME
 
+  //RESET GAME
+  function resetGame () {
+    gameReset = true
+    startGame()
+    gameReset = false
+  }
+  //END OF RESET GAME
+
+  //SHUFFLE CARDS
   function shuffle (array) {
     for(let i = array.length - 1; i > 0 ; i--) {
         let j = Math.floor(Math.random() * (i+1))
         [array[i], array[j]] = [array[j], array[i]]
     }
-}
+  }
+//END OF SHUFFLE CARDS
   
   startButton.addEventListener("click", startGame)
+  resetButton.addEventListener("click", resetGame)
   
-  createBoard();
-
+  createBoard()
 })
