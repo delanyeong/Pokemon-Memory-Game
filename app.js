@@ -311,6 +311,7 @@ function flipCard() {
         if (bossId === bossArray.length - 2) { //stop the time when round is won + change button to restart when all boards are cleared
             startButton.textContent = 'Restart'
             boss.setAttribute('src', bossArray[bossArray.length-1].img) //so that last pic appears, before that no appearing
+            pokeFound.play()
             congratulations()
             display.style.visibility = 'visible'
         } else {                              //stop the time when round is won + if condt not true -> next level

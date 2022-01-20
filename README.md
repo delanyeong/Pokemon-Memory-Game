@@ -10,15 +10,15 @@ of each card from the last time you revealed it.
 
 <br>
 
-<br>
-
 ## Technologies Used
 
-No additional technologies used - Vanilla Javascript
+No additional technologies used - (Vanilla) Javascript.
+
+<br>
 
 ## Approach Taken
 
-### Methods:
+### Methods Used:
 1. push()
 2. querySelector()
 3. getAttribute()
@@ -28,43 +28,42 @@ No additional technologies used - Vanilla Javascript
 7. sort()
 8. For loops
 
-### Cards
+### Game Elements
+
+#### Cards
 Create an array of cards where each card has a duplicate inside. Each card is represented as an object, with its name and image link as its keys. 
 
-### Game Board
+#### Game Board
 Create a 300px by 400px grid and use a for loop for the cardArray to push each card into the grid, giving each card an attribute of id and card back image.
 
-### Mechanism
-Create a click event listener for the grid.children, and for each click, the card chosen will be pushed into a dedicated empty array (limited to two elements) which will invoke the 
-checkForMatch function. 
-
-### Audio
-Include audio for:
+#### Audio
+Included audio for:
 1. Background music
 2. Card clicks
 3. Start and Reset buttons - to indicate start of level
 
-### Progress Bar
+#### Progress Bar
+Create two simple rectangle shapes, one with a black border and no fill, another with no border and green fill. 
+In app.js, create a constructor that calls out the element. Functions in the constructor will change the CSS (width % according to how many cards are won) and limit the numbers (0-100 only).
 
-### Start and Reset Buttons
+#### Start and Reset Buttons
+Start button invokes startGame() function that will:
+1. Start game
+2. Restart game (only when entire game is won)
+3. Advance next level
 
+Reset button invokes resetGame() function that will:
+1. Call out the startGame() function.
+2. Reset the game to the very first level at any point in the game. 
 
+### Mechanism
+Create a click event listener for the grid.children, and for each click, the card chosen will be pushed into a dedicated empty array (limited to two elements) which will invoke the 
+checkForMatch() function. 
 
-
-
-
-
-
-
-
-
-
-
-
-
+<br>
 
 ## Unsolved Problems
 
 ### Glitches
 
-1. Able to restart the timer for each round, due to shared logic of start and next level function button. 
+1. Able to restart the timer for each round, due to the shared logic of the start/reset/nextlevel feature.
