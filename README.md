@@ -30,23 +30,23 @@ No additional technologies used - (Vanilla) Javascript.
 
 ### Game Elements
 
-#### Cards
+#### • Cards
 Create an array of cards where each card has a duplicate inside. Each card is represented as an object, with its name and image link as its keys. 
 
-#### Game Board
+#### • Game Board
 Create a 300px by 400px grid and use a for loop for the cardArray to push each card into the grid, giving each card an attribute of id and card back image.
 
-#### Audio
+#### • Audio
 Included audio for:
 1. Background music
 2. Card clicks
 3. Start and Reset buttons - to indicate start of level
 
-#### Progress Bar
+#### • Progress Bar
 Create two simple rectangle shapes, one with a black border and no fill, another with no border and green fill. 
 In app.js, create a constructor that calls out the element. Functions in the constructor will change the CSS (width % according to how many cards are won) and limit the numbers (0-100 only).
 
-#### Start and Reset Buttons
+#### • Start and Reset Buttons
 Start button invokes startGame() function that will:
 1. Start game
 2. Restart game (only when entire game is won)
@@ -64,6 +64,6 @@ checkForMatch() function.
 
 ## Unsolved Problems
 
-### Glitches
+### • Glitches
 
 1. Able to restart the timer for each round, due to the shared logic of the start/reset/nextlevel feature.
