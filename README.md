@@ -65,6 +65,6 @@ Include audio for:
 
 ## Unsolved Problems
 
-## Glitches
+### Glitches
 
 1. Able to restart the timer for each round, due to shared logic of start and next level function button. 
