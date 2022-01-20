@@ -3,10 +3,12 @@
 <br>
 
 ## Introduction
-
-This memory game is like any ordinary memory game where all the cards are facing down. The goal is to match n pairs of cards on the board, and you are only allowed to flip two cards
+This memory game is similar to any ordinary memory game where all the cards are facing down. The goal is to match n pairs of cards on the board, and you are only allowed to flip two cards
 each turn. An unmatched pair with result in the cards flipping back down, while a matched pair will be voided and no longer playable. The challenge of the game is to remember the position
 of each card from the last time you revealed it. 
+
+### • Pokemon theme Memory Game with a twist
+However, this memory game includes levels, which you will have to clear 7 boards to catch 7 Pokemon. Each level will have progressively lesser time.
 
 <br>
 
