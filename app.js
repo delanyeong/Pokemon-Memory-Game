@@ -7,6 +7,24 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     )
 
+    const buttons = document.querySelectorAll('a');
+    buttons.forEach(btn => {
+        btn.addEventListener('click', function(e) {
+
+            let x = e.clientX - e.target.offsetLeft;
+            let y = e.clientY - e.target.offsetTop;
+
+            let ripples = document.createElement('hi');
+            ripples.style.left = x + 'px';
+            ripples.style.top = y + 'px';
+            this.appendChild(ripples);
+
+            setTimeout(() => {
+                ripples.remove()
+            }, 1000);
+        })
+    })
+
     //card options
     const cardArray = [
         {
@@ -284,6 +302,7 @@ function flipCard() {
         display.style.visibility = 'visible'
       } 
       else if (cardsWon.length === cardArray.length/2) { //stop the time when board is cleared (level won)
+        startButton.textContent = "Next Level"
         timer = duration;
         clearInterval(myInterval);
         setTimeout(function() { alertDisplay.textContent = "Congrats!" }, 500)
