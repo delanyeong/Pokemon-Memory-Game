@@ -41,6 +41,7 @@ Included audio for:
 1. Background music
 2. Card clicks
 3. Start and Reset buttons - to indicate start of level
+4. When board is cleared - to indicate end of level
 
 #### • Progress Bar
 Create two simple rectangle shapes, one with a black border and no fill, another with no border and green fill. 
