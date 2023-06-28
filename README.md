@@ -1,5 +1,5 @@
-# General Assembly Software Engineering Immersive Bootcamp
 # Unit 1 Project : Javascript Game
+General Assembly Software Engineering Immersive Bootcamp
 
 <br>
 
